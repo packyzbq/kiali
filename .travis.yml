@@ -16,7 +16,7 @@ before_script:
   - cd $GOPATH/src/github.com/kiali
   - git clone https://github.com/kiali/kiali.git
   - cd kiali/
-  - git branch v1.15
+  - git checkout v1.15
   - cp -rf $GOPATH/src/github.com/packyzbq/kiali/Makefile .
   - cp -rf $GOPATH/src/github.com/packyzbq/kiali/make .
 
