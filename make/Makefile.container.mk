@@ -44,7 +44,7 @@ container-build-operator: .ensure-operator-sdk-exists
 	cd "${ROOTDIR}/operator" && "${OP_SDK}" build --image-builder ${DORP} --image-build-args "--pull" "${OPERATOR_QUAY_TAG}"
 
 ## container-build: Build Kiali and Kiali operator container images
-container-build: container-build-kiali container-build-operator
+container-build: container-build-kiali #container-build-operator
 
 ## container-push-kiali-quay: Pushes the Kiali image to quay.
 container-push-kiali-quay:
@@ -61,6 +61,7 @@ endif
 container-push-kiali-docker:
 ifeq ($(DORP),docker)
 	@echo Pushing current image to ${DOCKER_TAG} using docker
+	docker login -u ${DOCKER_USER} -p ${DOCEKR_PASSWD}
 	docker push ${DOCKER_TAG}
 else
 	@echo Pushing current image to ${DOCKER_TAG} using podman
@@ -78,4 +79,5 @@ else
 endif
 
 ## container-push: Pushes all container images to quay and docker hub.
-container-push: container-push-kiali-quay container-push-kiali-docker container-push-operator-quay
+# container-push: container-push-kiali-quay container-push-kiali-docker container-push-operator-quay
+container-push: container-push-kiali-docker

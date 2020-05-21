@@ -32,9 +32,9 @@ GOFMT ?= $(shell ${GO} env GOROOT)/bin/gofmt
 GO_VERSION_KIALI = 1.14.2
 
 # Identifies the Kiali container image that will be built.
-IMAGE_ORG ?= kiali
+IMAGE_ORG ?= packyzbq
 CONTAINER_NAME ?= ${IMAGE_ORG}/kiali
-CONTAINER_VERSION ?= dev
+CONTAINER_VERSION ?= v1.15-${ARCH}
 
 # These two vars allow Jenkins to override values.
 DOCKER_NAME ?= docker.io/${CONTAINER_NAME}
@@ -58,7 +58,7 @@ GOPATH ?= ${HOME}/go
 # Environment variables set when running the Go compiler.
 GO_BUILD_ENVVARS = \
 	GOOS=linux \
-	GOARCH=amd64 \
+	GOARCH=${ARCH} \
 	CGO_ENABLED=0 \
 
 # Determine if we should use Docker OR Podman - value must be one of "docker" or "podman"
@@ -112,9 +112,9 @@ endif
 
 include make/Makefile.build.mk
 include make/Makefile.container.mk
-include make/Makefile.cluster.mk
-include make/Makefile.operator.mk
-include make/Makefile.molecule.mk
+# include make/Makefile.cluster.mk
+# include make/Makefile.operator.mk
+# include make/Makefile.molecule.mk
 
 .PHONY: help
 help: Makefile
