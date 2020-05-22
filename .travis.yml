@@ -36,6 +36,7 @@ install:
  - git checkout v1.15
  - cp -rf $GOPATH/src/github.com/packyzbq/kiali/Makefile .
  - cp -rf $GOPATH/src/github.com/packyzbq/kiali/make .
+ - cp -rf $GOPATH/src/github.com/packyzbq/kiali/deploy/docker/Dockerfile deploy/docker/Dockerfile
  - make lint-install
 
 script:
