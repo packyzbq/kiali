@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi7-minimal
+FROM registry.access.redhat.com/ubi8-minimal
 
 LABEL maintainer="kiali-dev@googlegroups.com"
 
