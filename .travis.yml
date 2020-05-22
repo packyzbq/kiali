@@ -39,4 +39,6 @@ script:
   - if [ ! -z "$(gofmt -l ${GO_FILES})" ]; then echo "These files need to be formatted:" "$(gofmt -l ${GO_FILES})";echo "Diff files:"; gofmt -d ${GO_FILES}; exit 1; fi # Gofmt Linter
   - make lint
   - make clean build #test-race
+  - make container-build-kiali
+  - make container-push-kiali-docker
   # - make swagger-travis
